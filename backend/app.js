@@ -7,9 +7,12 @@ const path = require('path');
 const sauceRoutes = require('./routes/Sauce');
 const userRoutes = require('./routes/User');
 
+//Requiring dotenv (to hide mongoose password and name)
+require('dotenv').config()
+
 //mongoose connexion
 mongoose.connect(
-	'mongodb+srv://ljeandin:Luludindin88%26@p6.fqhk3.mongodb.net/P6?retryWrites=true&w=majority',
+	'mongodb+srv://' + process.env.NAME + ':' + process.env.PASSWORD + '@' + process.env.LINK ,
 	{ useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
   	console.log('Connexion à MongoDB réussie !');
