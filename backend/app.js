@@ -1,16 +1,16 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
-const path = require('path');
+const express = require('express'); // we'll use express to build the app
+const bodyParser = require('body-parser');// body parser to read form input and storing it as JS object
+const mongoose = require('mongoose');// mongoose for modeling data
+const path = require('path');// path is used to make path manipulation easier 
 
 //Declaring routes
 const sauceRoutes = require('./routes/Sauce');
 const userRoutes = require('./routes/User');
 
-//Requiring dotenv (to hide mongoose password and name)
+//Requiring dotenv (to hide mongoose connexion password and name -see right below)
 require('dotenv').config()
 
-//mongoose connexion
+//Mongoose connexion
 mongoose.connect(
 	'mongodb+srv://' + process.env.NAME + ':' + process.env.PASSWORD + '@' + process.env.LINK ,
 	{ useNewUrlParser: true, useUnifiedTopology: true })
@@ -21,7 +21,7 @@ mongoose.connect(
   	console.log('Connexion à MongoDB échouée !');
 });
 
-//app start
+//Using express
 const app = express();
 
 //headers for avoiding CORS problems
@@ -38,7 +38,7 @@ app.use(bodyParser.json());
 //path to images
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
-//path to sauces and authentification APIs
+//path to sauces and authentication in the API
 app.use('/api/sauces', sauceRoutes);
 app.use('/api/auth', userRoutes);
 

@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const sauceValidator = require('../middleware/sauceValidator');
+const mongoose = require('mongoose'); //mongoose for modeling data
+const sauceValidator = require('../middleware/sauceValidator'); // importing sauce validation middleware
 
 const sauceSchema = mongoose.Schema({
   userId: {type: String, required: true},
