@@ -20,7 +20,7 @@ exports.stringValidation = (req, res, next) => {
 exports.descriptionValidation = (req, res, next) => {
   validate({
     validator: 'isLength',
-    arguments: [10, 200], //description must be 10 to 200 characters long
+    arguments: [10, 1000], //description must be 10 to 1000 characters long
     matches: 'La description doit contenir entre {ARGS[0]} et {ARGS[1]}'
   }),
   validate({
