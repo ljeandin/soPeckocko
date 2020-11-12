@@ -1,7 +1,9 @@
 const express = require('express'); // we'll use express to build the app
 const bodyParser = require('body-parser');// body parser to read form input and storing it as JS object
-const mongoose = require('mongoose');// mongoose for modeling data
+const mongoose = require('mongoose');// mongoose import
 const path = require('path');// path is used to make path manipulation easier 
+const mongodbErrorHandler = require('mongoose-mongodb-errors');//mongodbErrorHandler to make sure database errors are handled
+mongoose.plugin(mongodbErrorHandler);
 
 //Declaring routes
 const sauceRoutes = require('./routes/Sauce');

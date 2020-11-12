@@ -12,9 +12,9 @@ exports.getAllSauces = (req, res, next) => {
 /*** Creating a new sauce ***/
 exports.createSauce = (req, res, next) => {
 	const sauceObject = JSON.parse(req.body.sauce);
-	delete sauceObject._id;
+	delete sauceObject._id; //deleting the fake id the frontend might have used
 	const sauce = new Sauce({
-		...sauceObject,
+		...sauceObject, //spread operator to get all the elements added by user
 		imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`,//Creating the image URL
 		/***likes, dislikes, etc. initialisation***/
 		likes: 0,
