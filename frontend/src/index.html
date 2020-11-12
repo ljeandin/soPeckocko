@@ -14,21 +14,21 @@
 </head>
 <body>
   <app-root></app-root>
-  <!--Cookie consent cdn and parameters (using https://www.osano.com/)-->
+  <!--Cookie consent cdn and parameters (using https://www.osano.com/cookieconsent/download/)-->
   <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
   <script>
   window.cookieconsent.initialise({
     "palette": {
       "popup": {
-        "background": "#ffffff",
-        "text": "#000000"
+        "background": "#fff",
+        "text": "#000"
       },
       "button": {
-        "background": "transparent",
-        "text": "#673ab7",
-        "border": "#673ab7"
+        "background": "#000",
+        "text": "#fff",
       }
     },
+    "theme": "classic",
     "content": {
       "message": "Ce site utilise des cookies pour vous assurer la meilleure expérience possible",
       "dismiss": "Compris !",
