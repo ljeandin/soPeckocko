@@ -1,9 +1,10 @@
 const mongoose = require('mongoose'); //mongoose for modeling data
+
 const sauceValidator = require('../middleware/sauceValidator'); // importing sauce validation middleware
 
 const sauceSchema = mongoose.Schema({
   userId: {type: String, required: true},
-  name: {type: String, required: true, validate: sauceValidator.stringValidation},
+  name: {type: String, required: true, validate: sauceValidator.stringValidation}, //here's a string undergoing validation (same as below)
   manufacturer: {type: String, required: true, validate: sauceValidator.stringValidation},
   description: {type: String, required: true, validate: sauceValidator.descriptionValidation},
   mainPepper: {type: String, required: true, validate: sauceValidator.stringValidation},

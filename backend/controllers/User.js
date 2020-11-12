@@ -1,18 +1,20 @@
 const bcrypt = require('bcrypt'); //hashing plugin
 const jwt = require('jsonwebtoken'); //JSON webtoken plugin
 const passwordValidator = require('password-validator'); //password validation plugin (setting it up below)
+const maskData = require('maskdata');//mask data is used to hide part of the data
 
 const User = require('../models/user'); //importing model
+const MaskData = require('maskdata');
 
 /***Setting up the password validation***/
 var schema = new passwordValidator();
 
-schema
-	.is().min(6)
-	.is().max(20)
-	.has().uppercase()
-	.has().lowercase()
-	.has().digits(1)
+schema //for the password validation
+	.is().min(6) //min 6 characters
+	.is().max(20) //max 20 characters
+	.has().uppercase() //at least one uppercase letter
+	.has().lowercase() //at least one lowercase letter
+	.has().digits(1) //at least one digit
 
 /***Signup controller***/
 exports.signup = (req, res, next) => {
@@ -22,8 +24,8 @@ exports.signup = (req, res, next) => {
 	bcrypt.hash(req.body.password, 10) //password hashing
 	.then(hash => {
 		const user = new User({ //setting up new user
-			email: req.body.email,
-			password: hash
+			email: maskData.maskEmail2(req.body.email), //getting email and masking it (with maskEmail2 and not maskEmail, because it's prone to bugs)
+			password: hash //getting hashed password
 		})
 		user.save() //saving new user
 			.then(() => res.status(201).json({message: 'Utilisateur créé'}))
@@ -35,7 +37,7 @@ exports.signup = (req, res, next) => {
 
 /***Login controller***/
 exports.login = (req, res, next) => {
-	User.findOne({ email: req.body.email }) //watching email
+	User.findOne({ email: maskData.maskEmail2(req.body.email) }) //getting email and making it go through the same masking process to "decode" it
 		.then(user => {
 			if (!user) { //if user not found, error message
 				return res.status(401).json({ error:'Utilisateur non trouvé' });
