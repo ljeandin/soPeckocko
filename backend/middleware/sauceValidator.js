@@ -1,9 +1,9 @@
 const validate = require('mongoose-validator'); //mongoose validation plugin
 
-/***Input validation for the sauce creation and modification (will be used in models/sauce.js***/
+/***This is the input validation for the sauce creation and modification (will be used in models/sauce.js***/
 
 //Sauce name, manufacturer and pepper validation
-exports.stringValidation = (req, res, next) => {
+exports.stringValidation = [
   validate({
     validator: 'isLength',
     arguments: [2, 30], //string must be 2 to 30 characters long
@@ -14,10 +14,10 @@ exports.stringValidation = (req, res, next) => {
     arguments: /[\wÀ-ÿ \-']/, //string can contain any letter and number, accented letters, spaces, dashes and apostrophe
     matches: 'Ce champ ne doit pas contenir de caractères particuliers'
   })
-}
+];
 
 //Sauce description validation
-exports.descriptionValidation = (req, res, next) => {
+exports.descriptionValidation = [
   validate({
     validator: 'isLength',
     arguments: [10, 1000], //description must be 10 to 1000 characters long
@@ -28,4 +28,4 @@ exports.descriptionValidation = (req, res, next) => {
     arguments: /[\wÀ-ÿ \-'?!.,]/, // description can contain any letter and number, accented letters, spaces, dashes, apostrophes and punctuation
     matches: 'La description ne doit pas contenir de caractères particuliers'
   })
-}
+];

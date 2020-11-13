@@ -4,7 +4,6 @@ const passwordValidator = require('password-validator'); //password validation p
 const maskData = require('maskdata');//mask data is used to hide part of the data
 
 const User = require('../models/user'); //importing model
-const MaskData = require('maskdata');
 
 /***Setting up the password validation***/
 var schema = new passwordValidator();

@@ -4,10 +4,10 @@ const sauceValidator = require('../middleware/sauceValidator'); // importing sau
 
 const sauceSchema = mongoose.Schema({
   userId: {type: String, required: true},
-  name: {type: String, required: true, validate: sauceValidator.stringValidation}, //here's a string undergoing validation (same as below)
-  manufacturer: {type: String, required: true, validate: sauceValidator.stringValidation},
-  description: {type: String, required: true, validate: sauceValidator.descriptionValidation},
-  mainPepper: {type: String, required: true, validate: sauceValidator.stringValidation},
+  name: {type: String, required: true, validate: sauceValidator.stringValidation}, //string undergoing validation, see at ../middleware/sauceValidator.js
+  manufacturer: {type: String, required: true, validate: sauceValidator.stringValidation}, //string undergoing validation, see at ../middleware/sauceValidator.js
+  description: {type: String, required: true, validate: sauceValidator.descriptionValidation}, //string undergoing validation, see at ../middleware/sauceValidator.js
+  mainPepper: {type: String, required: true, validate: sauceValidator.stringValidation}, //string undergoing validation, see at ../middleware/sauceValidator.js
   imageUrl: {type: String, required: true},
   heat: {type: Number, required: true},
   likes: {type: Number, required: true},
