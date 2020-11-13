@@ -1,8 +1,8 @@
 const validate = require('mongoose-validator'); //mongoose validation plugin
 
-/***This is the input validation for the sauce creation and modification (will be used in models/sauce.js***/
-
-//Sauce name, manufacturer and pepper validation
+/***This is the input validation for the sauce creation and modification (will be used in models/sauce.js)***/
+  
+ //Sauce name, manufacturer and pepper validation
 exports.stringValidation = [
   validate({
     validator: 'isLength',
