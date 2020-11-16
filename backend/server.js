@@ -1,7 +1,8 @@
 //Server creation
-const http = require('http');
-const app = require('./app');
+const http = require('http'); //using http to transfer data over the Hyper Text Transfer Protocol
+const app = require('./app');//importing app.js file
 
+/***Normalize a port to make sure the port provided is a number if not a number then a string and if anything else set it to false.***/
 const normalizePort = val => {
   const port = parseInt(val, 10);
 
@@ -13,9 +14,11 @@ const normalizePort = val => {
   }
   return false;
 };
+/***Setting the port to 3000 ***/
 const port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
+/***Error handling in case something malfunctions ***/
 const errorHandler = error => {
   if (error.syscall !== 'listen') {
     throw error;
@@ -36,13 +39,13 @@ const errorHandler = error => {
   }
 };
 
-const server = http.createServer(app);
+const server = http.createServer(app); // USing app.js to import the application's infos
 
-server.on('error', errorHandler);
+server.on('error', errorHandler);//Error in case something goes wrong when starting the server
 server.on('listening', () => {
   const address = server.address();
-  const bind = typeof address === 'string' ? 'pipe ' + address : 'port ' + port;
-  console.log('Listening on ' + bind);
+  const bind = typeof address === 'string' ? 'pipe ' + address : 'port ' + port; //using the port that he server will run on
+  console.log('Listening on ' + bind); //confirmation message
 });
 
-server.listen(port);
+server.listen(port); //server will listen on specified port
