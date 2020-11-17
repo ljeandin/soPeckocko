@@ -15,7 +15,7 @@ exports.stringValidation = [
 exports.descriptionValidation = [
   validate({
     validator: 'matches',
-    arguments: /^[\w\r\nÀ-ÿ \-'?!.,()]+$/, // description can contain any letter and number, linebreaks, accented letters, spaces, dashes, apostrophes, punctuation and parentheses
+    arguments: /^[\w\r\nÀ-ÿ \-'?!.,;()]+$/, // description can contain any letter and number, linebreaks, accented letters, spaces, dashes, apostrophes, punctuation and parentheses
     message: 'La description ne doit pas contenir de caractères particuliers'
   }),
 ];
